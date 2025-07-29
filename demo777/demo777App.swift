@@ -11,7 +11,13 @@ import SwiftUI
 struct demo777App: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+//            ContentView()
+            LibraryMainView()
+
         }
     }
+}
+
+#Preview {
+    LibraryMainView()
 }
