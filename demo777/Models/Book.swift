@@ -12,7 +12,7 @@ struct Book: Identifiable {
     let author: String
     let category: String
     let publisher: String
-    let publishYear: Int
+    let publishYear: String
     let imageUrl: String?
     let availableCopies: Int
     let totalCopies: Int
