@@ -3,7 +3,7 @@
 //  demo777
 //
 //  Created by 訪客使用者 on 2025/7/29.
-//
+// searchable 已經幫你寫好，改天看看
 
 import SwiftUI  // 引入SwiftUI框架，提供UI構建所需的所有組件和功能
 
