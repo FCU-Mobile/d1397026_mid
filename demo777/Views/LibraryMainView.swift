@@ -109,7 +109,7 @@ struct LibraryMainView: View {
                     Spacer()
                 }
                 .padding()
-                .frame(width: 220)
+                .frame(width: 120)
                 .background(Color(.systemGray6))
                 .offset(x: showCategoryMenu ? 0 : -240)
                 .animation(.easeInOut(duration: 0.25), value: showCategoryMenu)
