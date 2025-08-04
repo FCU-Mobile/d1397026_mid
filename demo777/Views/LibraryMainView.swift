@@ -10,11 +10,11 @@ import SwiftUI  // 引入SwiftUI框架，提供UI構建所需的所有組件和�
 // LibraryMainView是應用的主視圖，負責整合所有圖書館功能並提供用戶界面
 // 此視圖實現了側滑選單、搜索功能和書籍列表顯示的完整圖書館體驗
 struct LibraryMainView: View {
-    @StateObject private var vm = LibraryViewModel()  // 創建ViewModel實例並標記為@StateObject，確保視圖生命週期內只創建一次
+    @State private var vm = LibraryViewModel()  // 使用@State替代@StateObject，搭配@Observable的ViewModel
     @State private var showCategoryMenu: Bool = false  // 控制分類菜單顯示狀態的標誌，使用@State使其變化能觸發視圖重繪
 
     var body: some View {
-        NavigationView {  // 使用NavigationView作為容器，提供導航功能的基礎架構
+        NavigationStack {  // 使用NavigationStack替代NavigationView，提供更現代的導航功能架構
             ZStack(alignment: .leading) {  // 使用ZStack實現層疊佈局，設置左對齊便於側邊欄實現
                 // 主畫面內容
                 VStack(spacing: 0) {  // 垂直排列的主內容區，元素間無間距，確保視覺連貫性
@@ -118,7 +118,7 @@ struct LibraryMainView: View {
                 .animation(.easeInOut(duration: 0.25), value: showCategoryMenu)  // 添加緩入緩出動畫，持續0.25秒，使過渡更流暢
             }
             .navigationBarHidden(true)  // 隱藏默認導航欄，因為已經自定義了頂部欄
-        }  // NavigationView結束
+        }  // NavigationStack結束
     }  // body屬性結束
 }  // LibraryMainView結構結束
 

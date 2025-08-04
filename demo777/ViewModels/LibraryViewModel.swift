@@ -7,15 +7,17 @@
 
 import Foundation  // 導入Foundation框架，提供基礎數據類型和功能支持
 import SwiftUI  // 導入SwiftUI框架，用於UI數據綁定功能
+import Observation  // 導入Observation框架，提供@Observable宏支持
 
 // LibraryViewModel類負責管理圖書館應用的業務邏輯和數據狀態
 // 採用MVVM設計模式，將視圖邏輯與UI表示層分離，提高代碼可維護性和可測試性
-class LibraryViewModel: ObservableObject {  // 繼承ObservableObject使視圖可以監聽數據變化並自動更新UI
-    @Published var searchTerm: String = ""  // 用戶輸入的搜索詞，標記為@Published使其變化能觸發視圖更新
-    @Published var selectedCategory: Int? = nil  // 當前選中的分類ID，可選類型表示可以不選擇任何分類（即顯示全部）
-    @Published var books: [Book] = []  // 書籍數據集合，根據搜索結果和分類篩選會動態變化
-    @Published var categories: [Category] = []  // 所有可用的圖書分類列表
-    @Published var isLoggedIn: Bool = false  // 用戶登錄狀態，控制是否顯示需要權限的功能
+@Observable  // 使用@Observable宏替代ObservableObject，這是iOS 17引入的新數據管理方式
+class LibraryViewModel {  // 不再需要繼承ObservableObject
+    var searchTerm: String = ""  // 用戶輸入的搜索詞，不再需要@Published標記
+    var selectedCategory: Int? = nil  // 當前選中的分類ID，可選類型表示可以不選擇任何分類（即顯示全部）
+    var books: [Book] = []  // 書籍數據集合，根據搜索結果和分類篩選會動態變化
+    var categories: [Category] = []  // 所有可用的圖書分類列表
+    var isLoggedIn: Bool = false  // 用戶登錄狀態，控制是否顯示需要權限的功能
 
     init() {  // 初始化方法，設置初始數據
         // 建立分類數據，在實際應用中這些數據通常會從服務器或本地數據庫獲取
